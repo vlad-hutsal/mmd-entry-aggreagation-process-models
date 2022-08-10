@@ -1,0 +1,55 @@
+mmd-??-datalake
+
+mmd-ship1-dev
+amgmusic - main database of all records that we've collected (MySQL, CloudSQL - postgres)
+
+
+
+
+once per day for on-prem system - 4 hours to agregate exports for the end clients
+
+reasons to migrate to GCP
+- security
+- hard to maintanence
+- no one know a project fully
+- windows servers 2008 cost like 50 000 usd
+
+why do we need Report Data and Federated Query? why dont use just Cloud SQL?
+- 4 hours for generating export data on-prem, MySQL vs 20 minutes generating export from big query + 2 hours from cloud sql to report data
+
+- CloudSQL to Report Data (Federated query) - 2.5 hours, ~100Gb, and goal is to do it with 100Mb, and faster
+
+
+
+
+Write to Joe
+- what is AMG Music and how does it applies to entry aggregator?
+- what for the CloudSQL db is used for? Why do we put all data here after aggregation?
+
+
+MAK QUESTIONS:
+- is the data in mmd-muz-main-dev is the result of aggregation?
+- Rovi Editorial aka Vesta is a tool used to troubleshoot all Music products (AMG  Music, Muze Music, Rovi Music)
+AMG music, Muze music? are this a vendors like Sony or AEC?
+
+additional:
+- The idea is to serialize the model to avro format and load it to bigquery landing dataset.
+-- is landing dataset is something that is going to be created later on?
+-- what the content of landing dataset should looks like?
+
+
+
+agregator
+
+MMD Dev
+MMD Staging
+
+read data from big query (data lake -> landing data) - its good to have a big query as a storage of non agregated data, but it's bad for the client because its cheap but slow for the read write operations
+
+MySQL is syncronized with the CloudSQL
+
+we store data for CloudSQL in csv-like file with the U+0001 and U+0002 separators
+
+identify duplicates, produce one record with most valuable info about record
+
+put to cloud sql as a result
